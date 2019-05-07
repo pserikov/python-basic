@@ -2,83 +2,97 @@
 __author__ = 'Сериков Павел Евгеньевич'
 
 # Задание-1:
-# Напишите функцию, возвращающую ряд Фибоначчи с n-элемента до m-элемента.
-# Первыми элементами ряда считать цифры 1 1
+# Вывести символы в нижнем регистре, которые находятся вокруг
+# 1 или более символов в верхнем регистре.
+# Т.е. из строки "mtMmEZUOmcq" нужно получить ['mt', 'm', 'mcq']
+# Решить задачу двумя способами: с помощью re и без.
 
-def fibonacci(n, m):
+import re
 
-	fib_list = [1, 1]
+line = 'mtMmEZUOmcqWiryMQhhTxqKdSTKCYEJlEZCsGAMkgAYEOmHBSQsSUHKvSfbmxULaysmNO'\
+       'GIPHpEMujalpPLNzRWXfwHQqwksrFeipEUlTLeclMwAoktKlfUBJHPsnawvjPhfgewVzK'\
+       'TUfSYtBydXaVIpxWjNKgXANvIoumesCSSvjEGRJosUfuhRRDUuTQwLlJJJDdkVjfSAHqn'\
+       'LxooisBDWuxIhyjJaXDYwdoVPnsllMngNlmkpYOlqXEFIxPqqqgAWdJsOvqppOfyIVjXa'\
+       'pzGOrfinzzsNMtBIOclwbfRzytmDgEFUzxvZGkdOaQYLVBfsGSAfJMchgBWAsGnBnWete'\
+       'kUTVuPluKRMQsdelzBgLzuwiimqkFKpyQRzOUyHkXRkdyIEBvTjdByCfkVIAQaAbfCvzQ'\
+       'WrMMsYpLtdqRltXPqcSMXJIvlBzKoQnSwPFkapxGqnZCVFfKRLUIGBLOwhchWCdJbRuXb'\
+       'JrwTRNyAxDctszKjSnndaFkcBZmJZWjUeYMdevHhBJMBSShDqbjAuDGTTrSXZywYkmjCC'\
+       'EUZShGofaFpuespaZWLFNIsOqsIRLexWqTXsOaScgnsUKsJxiihwsCdBViEQBHQaOnLfB'\
+       'tQQShTYHFqrvpVFiiEFMcIFTrTkIBpGUflwTvAzMUtmSQQZGHlmQKJndiAXbIzVkGSeuT'\
+       'SkyjIGsiWLALHUCsnQtiOtrbQOQunurZgHFiZjWtZCEXZCnZjLeMiFlxnPkqfJFbCfKCu'\
+       'UJmGYJZPpRBFNLkqigxFkrRAppYRXeSCBxbGvqHmlsSZMWSVQyzenWoGxyGPvbnhWHuXB'\
+       'qHFjvihuNGEEFsfnMXTfptvIOlhKhyYwxLnqOsBdGvnuyEZIheApQGOXWeXoLWiDQNJFa'\
+       'XiUWgsKQrDOeZoNlZNRvHnLgCmysUeKnVJXPFIzvdDyleXylnKBfLCjLHntltignbQoiQ'\
+       'zTYwZAiRwycdlHfyHNGmkNqSwXUrxGc'
 
-	for i in range(2, m):
-		fib_list.append(fib_list[i - 2] + fib_list[i - 1])
+print(re.findall(r'[a-z]+', line))
 
-	return fib_list[n - 1:]
+# Задание-2:
+# Вывести символы в верхнем регистре, слева от которых находятся
+# два символа в нижнем регистре, а справа - два символа в верхнем регистре.
+# Т.е. из строки 
+# "GAMkgAYEOmHBSQsSUHKvSfbmxULaysmNOGIPHpEMujalpPLNzRWXfwHQqwksrFeipEUlTLec"
+# нужно получить список строк: ['AY', 'NOGI', 'P']
+# Решить задачу двумя способами: с помощью re и без.
 
-print(fibonacci(3, 10))
+line_2 = 'mtMmEZUOmcqWiryMQhhTxqKdSTKCYEJlEZCsGAMkgAYEOmHBSQsSUHKvSfbmxULaysm'\
+       'NOGIPHpEMujalpPLNzRWXfwHQqwksrFeipEUlTLeclMwAoktKlfUBJHPsnawvjPhfgewV'\
+       'fzKTUfSYtBydXaVIpxWjNKgXANvIoumesCSSvjEGRJosUfuhRRDUuTQwLlJJJDdkVjfSA'\
+       'HqnLxooisBDWuxIhyjJaXDYwdoVPnsllMngNlmkpYOlqXEFIxPqqqgAWdJsOvqppOfyIV'\
+       'jXapzGOrfinzzsNMtBIOclwbfRzytmDgEFUzxvZGkdOaQYLVBfsGSAfJMchgBWAsGnBnW'\
+       'etekUTVuPluKRMQsdelzBgLzuwiimqkFKpyQRzOUyHkXRkdyIEBvTjdByCfkVIAQaAbfC'\
+       'vzQWrMMsYpLtdqRltXPqcSMXJIvlBzKoQnSwPFkapxGqnZCVFfKRLUIGBLOwhchWCdJbR'\
+       'uXbJrwTRNyAxDctszKjSnndaFkcBZmJZWjUeYMdevHhBJMBSShDqbjAuDGTTrSXZywYkm'\
+       'jCCEUZShGofaFpuespaZWLFNIsOqsIRLexWqTXsOaScgnsUKsJxiihwsCdBViEQBHQaOn'\
+       'LfBtQQShTYHFqrvpVFiiEFMcIFTrTkIBpGUflwTvAzMUtmSQQZGHlmQKJndiAXbIzVkGS'\
+       'euTSkyjIGsiWLALHUCsnQtiOtrbQOQunurZgHFiZjWtZCEXZCnZjLeMiFlxnPkqfJFbCf'\
+       'KCuUJmGYJZPpRBFNLkqigxFkrRAppYRXeSCBxbGvqHmlsSZMWSVQyzenWoGxyGPvbnhWH'\
+       'uXBqHFjvihuNGEEFsfnMXTfptvIOlhKhyYwxLnqOsBdGvnuyEZIheApQGOXWeXoLWiDQN'\
+       'JFaXiUWgsKQrDOeZoNlZNRvHnLgCmysUeKnVJXPFIzvdDyleXylnKBfLCjLHntltignbQ'\
+       'oiQzTYwZAiRwycdlHfyHNGmkNqSwXUrxGC'
 
-# Задача-2:
-# Напишите функцию, сортирующую принимаемый список по возрастанию.
-# Для сортировки используйте любой алгоритм (например пузырьковый).
-# Для решения данной задачи нельзя использовать встроенную функцию и метод sort()
+print(re.findall(r'[a-z]{2}([A-Z]+)[A-Z]{2}', line_2))
 
+# Задание-3:
+# Напишите скрипт, заполняющий указанный файл (самостоятельно задайте имя файла)
+# произвольными целыми цифрами, в результате в файле должно быть
+# 2500-значное произвольное число.
+# Найдите и выведите самую длинную последовательность одинаковых цифр
+# в вышезаполненном файле.
 
-def sort_to_max(origin_list):
+import os
+import random
 
-	j = 1
+def num_file(n, path, file):
+	# Функция, заполняющая указанный файл числом
+	# с заданным количеством цифр
+	file_path = os.path.join(path, file)
+	f = open(file_path, 'w', encoding = 'UTF-8')
+	for i in range(0,n):
+		f.write(str(random.randint(0, 9)))
+	f.close()
 
-	while j != 0:
-		j = 0
-		for i in range(1, len(origin_list)):
-			# если значение слева больше - меняем местами и увеличиваем счетчик,
-			# чтобы остаться в цикле
-			if origin_list[i - 1] > origin_list[i]:
-				origin_list[i - 1], origin_list[i] = origin_list[i], origin_list[i - 1]
-				j += 1
+n = 2500 # количество цифр в числе
 
-	return origin_list
+file_folder = input("Введите путь к файлу:")
+file_name = input("Введите имя файла:")
 
-print(sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0]))
+num_file(n, file_folder, file_name)
 
-# Задача-3:
-# Напишите собственную реализацию стандартной функции filter.
-# Разумеется, внутри нельзя использовать саму функцию filter.
+# прочитаем число из файла
+file_path = os.path.join(file_folder, file_name)
+f = open(file_path, 'r', encoding = 'UTF-8')
+number = f.readline()
+f.close()
 
-def my_filter(my_list, my_arg):
+# сгруппируем последовательности одинаковых цифр в числе в отдельный список
+num = re.findall(r'1+|2+|3+|4+|5+|6+|7+|8+|9+|0+', number)
 
-	filter_list = []
+result = num[0]
 
-	for i in my_list:
-		if i == my_arg:
-			filter_list.append(i)
+# Найдем замую длинную последовательность
+for i in range(1,len(num)):
+	if len(result) < len(num[i]):
+		result = num[i]
 
-	return filter_list
-
-print(my_filter([1, 2, 3, 4, 5, 6, 6, 7, 8], 6))
-
-# Задача-4:
-# Даны четыре точки А1(х1, у1), А2(x2 ,у2), А3(x3 , у3), А4(х4, у4).
-# Определить, будут ли они вершинами параллелограмма.
-
-import math
-
-def parall_check(a1, a2, a3, a4):
-	# Проверка на параллелограмм.
-	# Вершины заданы последовательно в виде a = [x, y]
-	# Вычислим длины сторон и сравним противоположные.
-	# Если равны - параллеограмм
-	a = math.sqrt((a2[0] - a1[0])**2 + (a2[1] - a1[1])**2)
-	b = math.sqrt((a3[0] - a4[0])**2 + (a3[1] - a4[1])**2)
-	c = math.sqrt((a3[0] - a2[0])**2 + (a3[1] - a2[1])**2)
-	d = math.sqrt((a4[0] - a1[0])**2 + (a4[1] - a1[1])**2)
-
-	if a == b and c == d:
-		print("Параллелограмм!!!")
-	else:
-		print("Не параллелограмм ((")
-
-A1 = [1, 1]
-A2 = [3, 5]
-A3 = [8, 6]
-A4 = [6, 2]
-
-parall_check(A1, A2, A3, A4)
+print("Самая длинная последовательность цифр в числе:", result)
