@@ -1,44 +1,66 @@
 
 __author__ = 'Сериков Павел Евгеньевич'
 
-# Все задачи текущего блока решите с помощью генераторов списков!
+# Задача-1:
+# Напишите скрипт, создающий директории dir_1 - dir_9 в папке,
+# из которой запущен данный скрипт.
+# И второй скрипт, удаляющий эти папки.
 
-# Задание-1:
-# Дан список, заполненный произвольными целыми числами. 
-# Получить новый список, элементы которого будут
-# квадратами элементов исходного списка
-# [1, 2, 4, 0] --> [1, 4, 16, 0]
+import os
+import shutil # Для копирования файлов в Задаче-3
 
-lst = [1, 2, 4, 0]
-lst_new = [el**2 for el in lst]
+def make_dir(dir_name):
+	os.mkdir(dir_name)
 
-print(lst)
-print(lst_new)
+def del_dir(dir_name):
+	os.rmdir(dir_name)
 
-# Задание-2:
-# Даны два списка фруктов.
-# Получить список фруктов, присутствующих в обоих исходных списках.
+def prn_dir(dir_name='.'):
+	print (os.listdir(dir_name))
 
-fruits_1 = ["яблоко", "груша", "банан", "киви", "арбуз", "манго"]
-fruits_2 = ["абрикос", "персик", "банан", "ананас", "груша", "апельсин", "яблоко"]
+def chg_dir(dir_name):
+    os.chdir(dir_name)
 
-fruits_common = [el for el in fruits_1 if el in fruits_2]
+# для копирвания файлов (Задача-3) воспользуюсь кодом из
+# предыдущего курса "Python быстрый старт"
+def file_copy(filename):        # Функция дублирования файла в *.copy
+    if os.path.isfile(filename):
+        newfile = filename + '.copy'
+        shutil.copy(filename, newfile)
+        print(filename + " --> " + newfile)
+        if os.path.exists(newfile):
+            print("Файл " + newfile + " успешно скопирован.")
+            return True
+        else:
+            print("Проблема при копировании!")
+            return False
 
-print(fruits_1)
-print(fruits_2)
-print(fruits_common)
+if __name__ == "__main__":
+    # получим текущую директорию
+    cur_dir = os.getcwd()
+    print(cur_dir)
 
-# Задание-3:
-# Дан список, заполненный произвольными числами.
-# Получить список из элементов исходного, удовлетворяющих следующим условиям:
-# + Элемент кратен 3
-# + Элемент положительный
-# + Элемент не кратен 4
+    prn_dir(cur_dir)
 
-lst = [el for el in range(1,41)]
+    # создадим папки
+    for i in range(1, 10):
+        make_dir("dir_" + str(i))
 
-print(lst)
+    prn_dir(cur_dir)
 
-lst_new = [el for el in lst if el % 3 == 0 and el > 0 and el % 4 != 0]
+    # удалим папки
+    for i in range(1, 10):
+        del_dir("dir_" + str(i))
 
-print(lst_new)
+    prn_dir(cur_dir)
+
+    # Задача-2:
+    # Напишите скрипт, отображающий папки текущей директории.
+
+    dir_list = list(os.walk(cur_dir)) # соберем всю информацию о текущей деректории
+    print("\n".join(dir_list[0][1])) # выведем только список папок из текущей директории
+
+    # Задача-3:
+    # Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.
+
+    file_copy(__file__)

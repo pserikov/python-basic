@@ -1,98 +1,68 @@
 
 __author__ = 'Сериков Павел Евгеньевич'
 
-# Задание-1:
-# Вывести символы в нижнем регистре, которые находятся вокруг
-# 1 или более символов в верхнем регистре.
-# Т.е. из строки "mtMmEZUOmcq" нужно получить ['mt', 'm', 'mcq']
-# Решить задачу двумя способами: с помощью re и без.
-
-import re
-
-line = 'mtMmEZUOmcqWiryMQhhTxqKdSTKCYEJlEZCsGAMkgAYEOmHBSQsSUHKvSfbmxULaysmNO'\
-       'GIPHpEMujalpPLNzRWXfwHQqwksrFeipEUlTLeclMwAoktKlfUBJHPsnawvjPhfgewVzK'\
-       'TUfSYtBydXaVIpxWjNKgXANvIoumesCSSvjEGRJosUfuhRRDUuTQwLlJJJDdkVjfSAHqn'\
-       'LxooisBDWuxIhyjJaXDYwdoVPnsllMngNlmkpYOlqXEFIxPqqqgAWdJsOvqppOfyIVjXa'\
-       'pzGOrfinzzsNMtBIOclwbfRzytmDgEFUzxvZGkdOaQYLVBfsGSAfJMchgBWAsGnBnWete'\
-       'kUTVuPluKRMQsdelzBgLzuwiimqkFKpyQRzOUyHkXRkdyIEBvTjdByCfkVIAQaAbfCvzQ'\
-       'WrMMsYpLtdqRltXPqcSMXJIvlBzKoQnSwPFkapxGqnZCVFfKRLUIGBLOwhchWCdJbRuXb'\
-       'JrwTRNyAxDctszKjSnndaFkcBZmJZWjUeYMdevHhBJMBSShDqbjAuDGTTrSXZywYkmjCC'\
-       'EUZShGofaFpuespaZWLFNIsOqsIRLexWqTXsOaScgnsUKsJxiihwsCdBViEQBHQaOnLfB'\
-       'tQQShTYHFqrvpVFiiEFMcIFTrTkIBpGUflwTvAzMUtmSQQZGHlmQKJndiAXbIzVkGSeuT'\
-       'SkyjIGsiWLALHUCsnQtiOtrbQOQunurZgHFiZjWtZCEXZCnZjLeMiFlxnPkqfJFbCfKCu'\
-       'UJmGYJZPpRBFNLkqigxFkrRAppYRXeSCBxbGvqHmlsSZMWSVQyzenWoGxyGPvbnhWHuXB'\
-       'qHFjvihuNGEEFsfnMXTfptvIOlhKhyYwxLnqOsBdGvnuyEZIheApQGOXWeXoLWiDQNJFa'\
-       'XiUWgsKQrDOeZoNlZNRvHnLgCmysUeKnVJXPFIzvdDyleXylnKBfLCjLHntltignbQoiQ'\
-       'zTYwZAiRwycdlHfyHNGmkNqSwXUrxGc'
-
-print(re.findall(r'[a-z]+', line))
-
-# Задание-2:
-# Вывести символы в верхнем регистре, слева от которых находятся
-# два символа в нижнем регистре, а справа - два символа в верхнем регистре.
-# Т.е. из строки 
-# "GAMkgAYEOmHBSQsSUHKvSfbmxULaysmNOGIPHpEMujalpPLNzRWXfwHQqwksrFeipEUlTLec"
-# нужно получить список строк: ['AY', 'NOGI', 'P']
-# Решить задачу двумя способами: с помощью re и без.
-
-line_2 = 'mtMmEZUOmcqWiryMQhhTxqKdSTKCYEJlEZCsGAMkgAYEOmHBSQsSUHKvSfbmxULaysm'\
-       'NOGIPHpEMujalpPLNzRWXfwHQqwksrFeipEUlTLeclMwAoktKlfUBJHPsnawvjPhfgewV'\
-       'fzKTUfSYtBydXaVIpxWjNKgXANvIoumesCSSvjEGRJosUfuhRRDUuTQwLlJJJDdkVjfSA'\
-       'HqnLxooisBDWuxIhyjJaXDYwdoVPnsllMngNlmkpYOlqXEFIxPqqqgAWdJsOvqppOfyIV'\
-       'jXapzGOrfinzzsNMtBIOclwbfRzytmDgEFUzxvZGkdOaQYLVBfsGSAfJMchgBWAsGnBnW'\
-       'etekUTVuPluKRMQsdelzBgLzuwiimqkFKpyQRzOUyHkXRkdyIEBvTjdByCfkVIAQaAbfC'\
-       'vzQWrMMsYpLtdqRltXPqcSMXJIvlBzKoQnSwPFkapxGqnZCVFfKRLUIGBLOwhchWCdJbR'\
-       'uXbJrwTRNyAxDctszKjSnndaFkcBZmJZWjUeYMdevHhBJMBSShDqbjAuDGTTrSXZywYkm'\
-       'jCCEUZShGofaFpuespaZWLFNIsOqsIRLexWqTXsOaScgnsUKsJxiihwsCdBViEQBHQaOn'\
-       'LfBtQQShTYHFqrvpVFiiEFMcIFTrTkIBpGUflwTvAzMUtmSQQZGHlmQKJndiAXbIzVkGS'\
-       'euTSkyjIGsiWLALHUCsnQtiOtrbQOQunurZgHFiZjWtZCEXZCnZjLeMiFlxnPkqfJFbCf'\
-       'KCuUJmGYJZPpRBFNLkqigxFkrRAppYRXeSCBxbGvqHmlsSZMWSVQyzenWoGxyGPvbnhWH'\
-       'uXBqHFjvihuNGEEFsfnMXTfptvIOlhKhyYwxLnqOsBdGvnuyEZIheApQGOXWeXoLWiDQN'\
-       'JFaXiUWgsKQrDOeZoNlZNRvHnLgCmysUeKnVJXPFIzvdDyleXylnKBfLCjLHntltignbQ'\
-       'oiQzTYwZAiRwycdlHfyHNGmkNqSwXUrxGC'
-
-print(re.findall(r'[a-z]{2}([A-Z]+)[A-Z]{2}', line_2))
-
-# Задание-3:
-# Напишите скрипт, заполняющий указанный файл (самостоятельно задайте имя файла)
-# произвольными целыми цифрами, в результате в файле должно быть
-# 2500-значное произвольное число.
-# Найдите и выведите самую длинную последовательность одинаковых цифр
-# в вышезаполненном файле.
+# Задача-1:
+# Напишите небольшую консольную утилиту,
+# позволяющую работать с папками текущей директории.
+# Утилита должна иметь меню выбора действия, в котором будут пункты:
+# 1. Перейти в папку
+# 2. Просмотреть содержимое текущей папки
+# 3. Удалить папку
+# 4. Создать папку
+# При выборе пунктов 1, 3, 4 программа запрашивает название папки
+# и выводит результат действия: "Успешно создано/удалено/перешел",
+# "Невозможно создать/удалить/перейти"
+# Для решения данной задачи используйте алгоритмы из задания easy,
+# оформленные в виде соответствующих функций,
+# и импортированные в данный файл из easy.py
 
 import os
-import random
+import easy
 
-def num_file(n, path, file):
-	# Функция, заполняющая указанный файл числом
-	# с заданным количеством цифр
-	file_path = os.path.join(path, file)
-	f = open(file_path, 'w', encoding = 'UTF-8')
-	for i in range(0,n):
-		f.write(str(random.randint(0, 9)))
-	f.close()
+answer = ''
 
-n = 2500 # количество цифр в числе
+while answer != 'q':
+       print("\nКонсольная утилита для работы с папками текущей директории.")
+       print(" [1] Перейти в папку.")
+       print(" [2] Посмотреть содержимое текущей папки.")
+       print(" [3] Удалить папку.")
+       print(" [4] Создать папку.")
 
-file_folder = input("Введите путь к файлу:")
-file_name = input("Введите имя файла:")
+       answer = input("Выберите номер действия (для выхода нажмите 'q'):")
 
-num_file(n, file_folder, file_name)
+       if answer == '1':
+              print("\nТекущая папка:\n", os.getcwd())
+              change_dir = input("\nВведите папку для перехода: ")
+              print("\nПробуем перейти в папку " + change_dir + "...")
+              try:
+                     easy.chg_dir(change_dir)
+                     print("Успешно перешел.")
+              except Exception:
+                     print("Невозможно перейти.")
 
-# прочитаем число из файла
-file_path = os.path.join(file_folder, file_name)
-f = open(file_path, 'r', encoding = 'UTF-8')
-number = f.readline()
-f.close()
+       elif answer == '2':
+              print("\nСодержимое текущей папки:")
+              easy.prn_dir()
 
-# сгруппируем последовательности одинаковых цифр в числе в отдельный список
-num = re.findall(r'1+|2+|3+|4+|5+|6+|7+|8+|9+|0+', number)
+       elif answer == '3':
+              print("\nТекущая папка:\n", os.getcwd())
+              del_dir = input("\nВведите папку для удаления: ")
+              print("\nПробуем удалить папку " + del_dir + "...")
+              try:
+                     easy.del_dir(del_dir)
+                     print("Успешно удалено.")
+              except Exception:
+                     print("Невозможно удалить.")
+       elif answer == '4':
+              print("\nТекущая папка:\n", os.getcwd())
+              create_dir = input("\nВведите папку для создания: ")
+              print("\nПробуем создать папку " + create_dir + "...")
+              try:
+                     easy.make_dir(create_dir)
+                     print("Успешно создано.")
+              except Exception:
+                     print("Невозможно создать.")
+       else:
+              pass
 
-result = num[0]
 
-# Найдем замую длинную последовательность
-for i in range(1,len(num)):
-	if len(result) < len(num[i]):
-		result = num[i]
-
-print("Самая длинная последовательность цифр в числе:", result)
